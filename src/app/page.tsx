@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { api } from "./api/client";
 import NewPost from "@/components/NewPost";
 import PostCard from "@/components/PostCard";
+import { Spinner } from "@/components/ui/spinner";
 
 interface Post {
   post_id: string;
@@ -35,7 +36,7 @@ export default function Home() {
   }, []);
 
   if (loading) {
-    return <p className="text-center text-gray-500 mt-10">Carregando...</p>;
+    return <Spinner className="p-3" />;
   }
 
   return (

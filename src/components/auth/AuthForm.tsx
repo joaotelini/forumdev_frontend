@@ -3,6 +3,7 @@ import { useState } from "react";
 import { api } from "@/app/api/client";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { Spinner } from "../ui/spinner";
 
 export default function AuthForm({ mode }: { mode: "login" | "signup" }) {
   const router = useRouter();
@@ -66,13 +67,13 @@ export default function AuthForm({ mode }: { mode: "login" | "signup" }) {
       <button
         type="submit"
         disabled={loading}
-        className={`w-full py-4 rounded-lg font-semibold text-lg text-white transition cursor-pointer ${
+        className={`w-full py-4 flex items-center justify-center rounded-lg font-semibold text-lg text-white transition cursor-pointer ${
           loading
             ? "bg-gray-400 cursor-not-allowed"
             : "bg-gray-900 hover:bg-gray-800"
         }`}
       >
-        {loading ? "..." : mode === "signup" ? "Cadastrar" : "Entrar"}
+        {loading ? <Spinner /> : mode === "signup" ? "Cadastrar" : "Entrar"}
       </button>
 
       <p className="text-center text-base mt-6 text-gray-600">
