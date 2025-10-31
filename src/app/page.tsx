@@ -40,22 +40,22 @@ export default function Home() {
   }
 
   return (
-    <div className="w-full max-w-2xl space-y-6 ">
-      <div>
-        <h1 className="text-3xl font-bold text-center text-gray-900">Home</h1>
-      </div>
-      <NewPost onPostCreated={fetchPosts} />
-      {error && <p className="text-red-500 text-center">{error}</p>}
-      <div className="space-y-4">
-        {posts
-          .sort(
-            (a, b) =>
-              new Date(b.post_created_at).getTime() -
-              new Date(a.post_created_at).getTime()
-          )
-          .map((post) => (
-            <PostCard key={post.post_id} post={post} />
-          ))}
+    <div className="min-h-screen w-full flex flex-col justify-center items-center bg-gray-100 p-8">
+      <div className="w-full max-w-2xl flex flex-col justify-center items-center space-y-6">
+        <h1 className="text-3xl font-bold text-center text-gray-900">ForumDev</h1>
+        <NewPost onPostCreated={fetchPosts} />
+        {error && <p className="text-red-500 text-center">{error}</p>}
+        <div className="w-full space-y-4">
+          {posts
+            .sort(
+              (a, b) =>
+                new Date(b.post_created_at).getTime() -
+                new Date(a.post_created_at).getTime()
+            )
+            .map((post) => (
+              <PostCard key={post.post_id} post={post} />
+            ))}
+        </div>
       </div>
     </div>
   );
