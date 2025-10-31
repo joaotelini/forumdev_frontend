@@ -18,10 +18,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body
-        className={`${instumentSans.variable} antialiased bg-[#F5F8FA] text-[#0F1419] min-h-screen`}
-      >
-        <main className="pt-16 flex justify-center px-4">{children}</main>
+      <body className={`${instumentSans.variable} antialiased`}>
+        {children}
       </body>
     </html>
   );
