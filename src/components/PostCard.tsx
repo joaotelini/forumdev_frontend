@@ -12,7 +12,7 @@ interface PostProps {
 
 export default function PostCard({ post }: PostProps) {
   return (
-    <div className="bg-white rounded-xl shadow-sm p-4 hover:shadow-md transition-shadow">
+    <div className="bg-white rounded-xl shadow-sm p-4 hover:shadow-md transition-shadow cursor-pointer">
       <div className="flex items-center justify-between mb-2">
         <span className="font-semibold text-gray-800">
           {post.user_username}
@@ -27,8 +27,14 @@ export default function PostCard({ post }: PostProps) {
           })}
         </span>
       </div>
-      <h3 className="font-medium text-gray-900 mb-1">{post.post_title}</h3>
-      <p className="text-gray-700 text-sm">{post.post_content}</p>
+      <div className="flex flex-col">
+        <h3 className="font-medium text-gray-900 mb-1 wrap-break-word">
+          {post.post_title}
+        </h3>
+        <p className="text-gray-700 text-sm wrap-break-word">
+          {post.post_content}
+        </p>
+      </div>
     </div>
   );
 }

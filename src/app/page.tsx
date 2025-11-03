@@ -45,7 +45,7 @@ export default function Home() {
         <h1 className="text-3xl font-bold text-center text-gray-900">ForumDev</h1>
         <NewPost onPostCreated={fetchPosts} />
         {error && <p className="text-red-500 text-center">{error}</p>}
-        <div className="w-full space-y-4">
+        <div className="w-full h-full space-y-4">
           {posts
             .sort(
               (a, b) =>
