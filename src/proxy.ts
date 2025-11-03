@@ -7,7 +7,7 @@ const publicRoutes = [
   { path: "/signup", whenAuth: "redirect" },
 ];
 
-export default async function Middleware(req: NextRequest) {
+export default async function proxy(req: NextRequest) {
   const path = req.nextUrl.pathname;
 
   const publicRoute = publicRoutes.find((route) => route.path === path);
