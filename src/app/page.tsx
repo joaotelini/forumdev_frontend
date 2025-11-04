@@ -24,6 +24,7 @@ export default function Home() {
     try {
       const res = await api.get("/posts", { withCredentials: true });
       setPosts(res.data.posts || []);
+      if (posts.length === 0) setError("Nenhum post encontrado, faça um post!");
     } catch (err: any) {
       setError("Erro ao carregar posts");
     } finally {
@@ -42,9 +43,11 @@ export default function Home() {
   return (
     <div className="min-h-screen w-full flex flex-col justify-center items-center bg-gray-100 p-8">
       <div className="w-full max-w-2xl flex flex-col justify-center items-center space-y-6">
-        <h1 className="text-3xl font-bold text-center text-gray-900">ForumDev</h1>
+        <h1 className="text-3xl font-bold text-center text-gray-900">
+          ForumDev
+        </h1>
         <NewPost onPostCreated={fetchPosts} />
-        {error && <p className="text-red-500 text-center">{error}</p>}
+        {error && <p className="text-center">{error}</p>}
         <div className="w-full h-full space-y-4">
           {posts
             .sort(
